@@ -1,0 +1,90 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Globalization;
+
+namespace exercicio_02
+{
+	class Program
+	{
+        static void Main(string[] args)
+        {    
+        	try
+        	{
+        		String entrada;
+        		int entradaConvertida = 0;
+        		do
+        		{
+        			Console.Write("Digite os dois últimos números de seu RU: ");
+        			entrada = Console.ReadLine();
+        			
+        			try 
+        			{
+        				entradaConvertida = Convert.ToInt32(entrada);
+        			}
+        			catch 
+        			{
+        				entradaConvertida = 0;
+        			}
+        			if(entradaConvertida > 0)
+        			{
+        				break;
+        				
+        			}
+        			else
+        			{
+        				Console.WriteLine("entrada inválida!! ");
+        			}
+        		}
+        		
+        	}while (true) ;
+           	Console.WriteLine("Números Primos: ");
+           	
+           	int qtdThreads = entradaConvertida <=10 ? 1: Decimal.ToInt32(Decimal.Ceiling(entradaConvertida/10))+1;
+           	Console.WriteLine(qtdThreads);
+           	for (var i = 1; i <= qtdThreads; i++)
+           	{
+           		int inicial = i == 1 ? 1: ((i - 1)* 10 + 1);
+                int final = i==1 ? (entradaConvertida <= 10 ? entradaConvertida :i*10) : (i*10 < entradaConvertida > i*10:entradaConvertida);
+             
+               Thread t1 = new Thread(() =>
+               {
+            	
+                	Primo(inicial, final, entradaConvertida);
+               });
+               t1.Start();
+               }
+        }       
+                catch
+                {
+                    Console.WriteLine("Erro de execurção");
+                }
+                
+        public static void primo(int inicial, int final, int n)
+        {
+            List<int> numPrimo = new List<int>();
+            
+        for (var i = inicial; i <= final; i++)
+        }   
+            bool numEPrimos = true;
+            
+            for (var j = 2; j <= n; j++)
+            {
+            	if((i%j) == 0 && i != j)
+            	{
+            		numEPrimos = false; break;
+            	}
+            	else {
+            		numPrimos.Add(i);
+            	}
+            	foreach (var numEPrimo in numPrimos)
+            	{
+            		Console.WriteLine(numEPrimo);
+            	}
+            }
+           	
+           	
+        }
+    }
+}      
